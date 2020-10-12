@@ -125,14 +125,15 @@
     }
 
     async function main() {
-      await liff.init({ liffId: "1655091863-wYeA8k2N" })
-      getEnvironment()
-      getUserProfile()
-      getContext()
-      getFriendship()
-      // createUniversalLink()
+      await liff.init({ liffId: "1655091863-wYeA8k2N" });
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn);
+      getEnvironment();
+      getUserProfile();
+      getContext();
+      getFriendship();
+      // createUniversalLink();
     }
-    main()
+    main();
   </script>
 </body>
 </html>
