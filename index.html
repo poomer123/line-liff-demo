@@ -47,7 +47,7 @@
     function createUniversalLink() {
       const link1 = liff.permanenLink.createUrl();
       document.getElementById("universalLink1").append(link1);
-      
+
       liff.permanenLink.setExtraQueryParam('param=9');
       const link2 = liff.permanenLink.createUrl();
       document.getElementById("universalLink2").append(link2);
@@ -137,17 +137,19 @@
     }
 
     async function main() {
+      liff.ready.then(() => {
+        document.getElementById("isLoggedIn").append(liff.isLoggedIn());
+        if(liff.isLoggedIn()){
+          getEnvironment();
+          getUserProfile();
+          getContext();
+          getFriendship();
+          createUniversalLink();
+        } else {
+          liff.login();
+        }
+      });
       await liff.init({ liffId: "1655091863-wYeA8k2N" });
-      document.getElementById("isLoggedIn").append(liff.isLoggedIn());
-      if(liff.isLoggedIn()){
-        getEnvironment();
-        getUserProfile();
-        getContext();
-        getFriendship();
-        createUniversalLink();
-      } else {
-        liff.login();
-      }
     }
     main();
   </script>
